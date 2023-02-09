@@ -1,38 +1,24 @@
 function main() {
-    deleteEmails('New sign in detected')
+  addTag('StudentLiving@newcastle.edu.au', 'StudentLiving')
 }
 
-// Retreives up to 250 emails matching the sender email parsed
-function getThreads(email){
-    var max_threads = 250;
-    var complete = false;
+// Retreives up to 100 emails matching the sender email parsed
+function getThreadsViaEmail(email){
     var threads = [];
-    while(!complete){
-        threads = GmailApp.search('from:' + email, threads.length, threads.length + 50);
-        if(threads.length == max_threads){
-            complete = true;
-        }
-    }
+        threads = GmailApp.search('from:' + email, 0, 100);
     return threads;
 }
 
-// Retreives up to 250 emails matching the parsed header
-function getThreads(header){
-    var max_threads = 250;
-    var complete = false;
+// Retreives up to 100 emails matching the parsed header
+function getThreadsViaHeader(header){
     var threads = [];
-    while(!complete){
-        threads = GmailApp.search('subject:' + header, threads.length, threads.length + 50);
-        if(threads.length == max_threads){
-            complete = true;
-        }
-    }
+        threads = GmailApp.search('subject:' + header, 0, 100);
     return threads;
 }
 
 // Adds the parsed tag to the parsed email and moves it to archive
 function addTag(email, tag){
-    var threads = getThreads(email);
+    var threads = getThreadsViaEmail(email);
     var label = GmailApp.getUserLabelByName(tag);
     if(threads.length == 1){
         label.addToThread(threads[0]);
@@ -47,7 +33,8 @@ function addTag(email, tag){
 
 //Deletes emails with the matching header
 function deleteEmails(header){
-    var threads = getThreads(header);
+    var threads = getThreadsViaHeader(header);
+    Logger.log("Beginning deletion")        //TODO remove
     for(i = 0; i < threads.length; i++){
         GmailApp.moveThreadToTrash(threads[i]);
     }

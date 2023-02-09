@@ -1,5 +1,5 @@
 function main() {
-  
+    deleteEmails('New sign in detected')
 }
 
 // Retreives up to 250 emails matching the sender email parsed
@@ -42,5 +42,13 @@ function addTag(email, tag){
     }
     for(i = 0; i < threads.length; i++){
         threads[i].moveToArchive();
+    }
+}
+
+//Deletes emails with the matching header
+function deleteEmails(header){
+    var threads = getThreads(header);
+    for(i = 0; i < threads.length; i++){
+        GmailApp.moveThreadToTrash(threads[i]);
     }
 }

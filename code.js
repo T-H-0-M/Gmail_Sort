@@ -1,3 +1,6 @@
+function main() {
+  
+}
 
 // Retreives up to 250 emails matching the sender email parsed
 function getThreads(email){

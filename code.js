@@ -1,5 +1,5 @@
 function main() {
-  addTag('StudentLiving@newcastle.edu.au', 'StudentLiving')
+  
 }
 
 // Retreives up to 100 emails matching the sender email parsed

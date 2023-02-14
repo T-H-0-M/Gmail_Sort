@@ -1,4 +1,4 @@
-# Gmail-Sort
+# Gmail_Sort
 
 ## About
 This is a script that will sort (or delete) 250 emails via Google Apps Script into predefined tags. It uses Google Apps Script, therefore can only sort Gmail inboxes.

@@ -15,3 +15,6 @@ This program is intended to be used via Google Apps script. To run:
 
 ## Limitations
 The main limitation of this program is the 6 minute runtime limit via Google Apps Script, so this program is made to only process 250 emails per run to avoid hitting the 6 minute limit and timing out.
+
+## TODO
+Fix looping count issue
